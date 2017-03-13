@@ -1,7 +1,7 @@
 # docker-sensu-server
 
 CentOS and sensu.
-It runs redis, rabbitmq-server, uchiwa, sensu-api, sensu-server and ssh processes.
+It runs redis, rabbitmq-server, uchiwa, sensu-api, sensu-server and ssh processes. Has Ruby insalled and a disk check plugin.
 
 ## Installation
 
@@ -23,6 +23,11 @@ docker build -t yourname/docker-sensu-server .
 
 ```
 docker run -d -p 10022:22 -p 3000:3000 -p 4567:4567 -p 5671:5671 -p 15672:15672 hiroakis/docker-sensu-server
+```
+## Run the plugin command
+
+```
+check-disk-usage.rb -w 80 -c 90
 ```
 
 ## How to access via browser and sensu-client
@@ -81,13 +86,3 @@ These are examples of sensu-client configuration.
 }
 ```
 
-## ssh login
-
-```
-ssh hiroakis@localhost -p 10022
-password: hiroakis
-```
-
-## License
-
-MIT
